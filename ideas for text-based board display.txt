@@ -1,0 +1,98 @@
+
+
+
+    🔴🔶🟡🟩🔵💜♠️
+
+
+              15
+              🔴
+            13  14
+            ♠️   XX
+         10   11   12
+         XX   --   XX
+       6    7    8    9
+
+    1    2    3    4    5:
+    🔴
+
+
+                 1
+                🔴
+              2   3
+             🟡  🔴
+          4    5    6
+          🟡  🔴   🔴
+        7    8    9  10
+       🔴   🔴   🟡  🔴      
+    11   12   13   14   15
+    🔴   🔴   🔴   🔴   🔴
+
+
+final decision....
+
+           15
+           🔴
+         13  14
+         🟡  🔴
+       10   11   12
+      🟡   🔴   🔴
+     6    7    8     9
+    🔴   🔴   🟡   🔴      
+  1    2    3    4    5
+ 🔴   🔴   🔴   🔴   🔴
+
+
+peg_locations = [
+        (15, ),
+        (13, 14),
+        (10, 11, 12),
+        ( 6,  7,  8,  9),
+        ( 1,  2,  3,  4,  5)
+    ]
+
+# zero'th element of "state" is not used, since we number the board with digits 1-15
+state = [False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True]
+
+for index, row_elements in enumerate(peg_locations):
+	indentation = " " * (8 - index*2)
+    print(indentation  end="" )    
+
+    print(indentation  end="" )
+    
+    str = ""
+    for row_element in row_elements:
+    	str = "🔴   " if state[row_element] else "🟡   "
+    print()
+    
+ 
+
+
+for index, fruit in enumerate(fruits):
+    print(f"Index: {index}, Fruit: {fruit}")
+
+
+    def display_board(state):
+    """
+    Displays the current state of the triangular peg solitaire board.
+    Args:
+        state (list of bool): A list representing the pegs (True) and holes (False).
+    """
+    positions = [
+        (0,),
+        (1, 2),
+        (3, 4, 5),
+        (6, 7, 8, 9),
+        (10, 11, 12, 13, 14)
+    ]
+    
+    for row in positions:
+        print(" " * (4 - positions.index(row)), end="")  # Indentation for triangle shape
+        for idx in row:
+            print("●" if state[idx] else "○", end=" ")
+        print()  # Newline for the next row
+
+# Initial state: 14 pegs, 1 hole (typically the top hole is empty)
+initial_state = [False, True, True, True, True, True, True, True, True, True, True, True, True, True, True]
+
+# Display the initial board
+display_board(initial_state)
